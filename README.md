@@ -11,7 +11,9 @@ Functional calculator created using HTML, SCSS and JavaScript. The visual design
 ## Inspiration
 
 Currently working on the samsung dark mode calculator interface. If there is spare time left, Ill might add in the addition of the light mode.
+
 ![image](Images/dark-mode.jpg)
+
 ![image](Images/light-mode.jpg)
 
 ## Breakdown Logic -Initial
