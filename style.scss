@@ -1,0 +1,72 @@
+// Partials
+@use "./partials/mixins";
+@use "./partials/palette";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    @include mixins.flex($just-cont: center);
+    height: 100vh;
+}
+
+.calculator {
+    background: palette.$background;
+    border-radius: 30px;
+    width: 500px;
+    height: 750px;
+    padding: 50px;
+
+    &__display {
+        height: 20%;
+        color: palette.$btn-numbers;
+        @include mixins.flex(
+            $flx-dir: column,
+            $just-cont: flex-end,
+            $align-itm: end
+        );
+        @include mixins.text-style(41px, 800, 36px);
+        font-family: palette.$heading-font;
+    }
+
+    &__buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        justify-content: center;
+        align-content: center;
+        padding: 0px 50px;
+    }
+
+    &__operators {
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        margin: 15px;
+        @include mixins.background-and-color(
+            palette.$btn-background,
+            palette.$btn-operators
+        );
+        @include mixins.text-style(24px, 800, 27px);
+        &--red {
+            color: palette.$btn-clear;
+        }
+        font-family: palette.$body-font;
+    }
+
+    &__numbers {
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        margin: 15px;
+        @include mixins.background-and-color(
+            palette.$btn-background,
+            palette.$btn-numbers
+        );
+        @include mixins.text-style(24px, 800, 27px);
+        font-family: palette.$body-font;
+    }
+}

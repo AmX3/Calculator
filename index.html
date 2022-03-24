@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="style.css" rel="stylesheet" text="text/css" />
+        <script type="text/javascript" src="script.js"></script>
+        <title>Calculator</title>
+    </head>
+    <body>
+        <div class="calculator">
+            <div class="calculator__display" id="calculatorDisplay">
+                <div class="calculator__previous-result" id="previousOperand">
+                    123
+                </div>
+                <div class="calculator__current-result" id="currentOperand">
+                    456
+                </div>
+            </div>
+            <hr />
+            <div class="calculator__buttons">
+                <button
+                    id="clear"
+                    class="calculator__operators calculator__operators--red"
+                >
+                    C
+                </button>
+                <button id="brackets" class="calculator__operators">()</button>
+                <button id="modulus" class="calculator__operators">%</button>
+                <button id="division" class="calculator__operators">÷</button>
+
+                <button class="calculator__numbers">7</button>
+                <button class="calculator__numbers">8</button>
+                <button class="calculator__numbers">9</button>
+                <button class="calculator__operators" id="multiply">X</button>
+
+                <button class="calculator__numbers">4</button>
+                <button class="calculator__numbers">5</button>
+                <button class="calculator__numbers">6</button>
+                <button class="calculator__operators" id="subtract">-</button>
+
+                <button class="calculator__numbers">1</button>
+                <button class="calculator__numbers">2</button>
+                <button class="calculator__numbers">3</button>
+                <button class="calculator__operators" id="addition">+</button>
+
+                <button class="calculator__numbers">+/-</button>
+                <button class="calculator__numbers">0</button>
+                <button class="calculator__numbers" id="decimal">.</button>
+                <button class="calculator__operators" id="total">=</button>
+            </div>
+        </div>
+    </body>
+</html>
