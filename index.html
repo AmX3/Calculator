@@ -4,12 +4,32 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="style.css" rel="stylesheet" text="text/css" />
-        <script type="text/javascript" src="script.js"></script>
         <title>Calculator</title>
+        <link href="style.css" rel="stylesheet" text="text/css" />
+        <link
+            href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+            media="all"
+        />
     </head>
     <body>
         <div class="calculator">
+            <input
+                class="calculator__checkbox"
+                type="checkbox"
+                id="toggleBtn"
+            />
+            <label class="calculator__toggle-button" for="toggleBtn">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+
+                <div class="calculator__slider"></div>
+            </label>
+
             <div class="calculator__display" id="calculatorDisplay">
                 <div class="calculator__previous-result" id="previousOperand">
                     123
@@ -18,7 +38,7 @@
                     456
                 </div>
             </div>
-            <hr />
+            <hr class="calculator__fancy-line" />
             <div class="calculator__buttons">
                 <button
                     id="clear"
@@ -26,14 +46,14 @@
                 >
                     C
                 </button>
-                <button id="brackets" class="calculator__operators">()</button>
+                <button id="brackets" class="calculator__operators">( )</button>
                 <button id="modulus" class="calculator__operators">%</button>
                 <button id="division" class="calculator__operators">÷</button>
 
                 <button class="calculator__numbers">7</button>
                 <button class="calculator__numbers">8</button>
                 <button class="calculator__numbers">9</button>
-                <button class="calculator__operators" id="multiply">X</button>
+                <button class="calculator__operators" id="multiply">x</button>
 
                 <button class="calculator__numbers">4</button>
                 <button class="calculator__numbers">5</button>
@@ -45,11 +65,12 @@
                 <button class="calculator__numbers">3</button>
                 <button class="calculator__operators" id="addition">+</button>
 
-                <button class="calculator__numbers">+/-</button>
+                <button class="calculator__numbers">+ / -</button>
                 <button class="calculator__numbers">0</button>
                 <button class="calculator__numbers" id="decimal">.</button>
-                <button class="calculator__operators" id="total">=</button>
+                <button class="calculator__total" id="total">=</button>
             </div>
         </div>
+        <script type="text/javascript" src="js-modules/script.js"></script>
     </body>
 </html>
