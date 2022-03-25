@@ -16,9 +16,57 @@ body {
 .calculator {
     background: palette.$background;
     border-radius: 30px;
-    width: 500px;
-    height: 750px;
-    padding: 50px;
+    width: 400px;
+    height: 700px;
+    padding: 40px 30px;
+
+    &--light-mode {
+        border: 1px solid palette.$light-background;
+        background: palette.$white;
+        box-shadow: 0px 5px 15px -5px palette.$light-background-shadow;
+    }
+
+    &__toggle-button {
+        cursor: pointer;
+        position: relative;
+        background-color: palette.$btn-background;
+        border: 2px solid #2b2e28;
+        height: 26px;
+        width: 50px;
+        display: flex;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .fa-moon {
+        color: palette.$moon;
+    }
+
+    .fa-sun {
+        color: palette.$sun;
+    }
+
+    &__checkbox {
+        position: absolute;
+        opacity: 0;
+    }
+
+    &__slider {
+        top: 1px;
+        left: 1px;
+        width: 20px;
+        height: 20px;
+        background-color: palette.$white;
+        border-radius: 50%;
+        position: absolute;
+        transition: transform 0.5s linear;
+    }
+
+    &__checkbox:checked + &__toggle-button &__slider {
+        transform: translateX(23px);
+    }
 
     &__display {
         height: 20%;
@@ -29,23 +77,30 @@ body {
             $align-itm: end
         );
         @include mixins.text-style(41px, 800, 36px);
-        font-family: palette.$heading-font;
+        font-family: palette.$calc-font;
+    }
+
+    &__fancy-line {
+        margin: 25px auto auto;
+
+        border: 1px solid palette.$fancy-line;
     }
 
     &__buttons {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-
         justify-content: center;
         align-content: center;
         padding: 0px 50px;
+        gap: 15px;
+        margin-top: 35px;
     }
 
     &__operators {
         border-radius: 50%;
         height: 70px;
         width: 70px;
-        margin: 15px;
+
         @include mixins.background-and-color(
             palette.$btn-background,
             palette.$btn-operators
@@ -55,18 +110,43 @@ body {
             color: palette.$btn-clear;
         }
         font-family: palette.$body-font;
+        border: 1px solid palette.$btn-border;
+
+        &--light-mode {
+            background: palette.$light-btn-background;
+            border: none;
+        }
     }
 
     &__numbers {
         border-radius: 50%;
         height: 70px;
         width: 70px;
-        margin: 15px;
+
         @include mixins.background-and-color(
             palette.$btn-background,
             palette.$btn-numbers
         );
         @include mixins.text-style(24px, 800, 27px);
         font-family: palette.$body-font;
+        border: 1px solid #2b2e28;
+
+        &--light-mode {
+            border: none;
+            @include mixins.background-and-color(
+                palette.$light-btn-background,
+                palette.$light-btn-numbers
+            );
+        }
+    }
+
+    &__total {
+        @include mixins.background-and-color(
+            palette.$dark-green,
+            palette.$btn-numbers
+        );
+        border-radius: 50%;
+        border: none;
+        @include mixins.text-style(24px, 800, 27px);
     }
 }

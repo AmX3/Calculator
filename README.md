@@ -6,15 +6,15 @@ Functional calculator created using HTML, SCSS and JavaScript. The visual design
 
 ## Live Site
 
---[place link to live site here]() --
+https://amx3.github.io/Calculator/
 
 ## Inspiration
 
-Currently working on the samsung dark mode calculator interface. If there is spare time left, Ill might add in the addition of the light mode.
+The interface of a Samsung calculator has been recreated. A toggle button that allows the user to switch from light to dark mode is a new addition.
 
-![image](Images/dark-mode.jpg)
-
-![image](Images/light-mode.jpg)
+|           Light Mode            |           Dark Mode            |
+| :-----------------------------: | :----------------------------: |
+| ![image](Images/light-mode.jpg) | ![image](Images/dark-mode.jpg) |
 
 ## Breakdown Logic -Initial
 
