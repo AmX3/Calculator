@@ -26,7 +26,6 @@
             <label class="calculator__toggle-button" for="toggleBtn">
                 <i class="fa-solid fa-sun"></i>
                 <i class="fa-solid fa-moon"></i>
-
                 <div class="calculator__slider"></div>
             </label>
 
@@ -34,9 +33,10 @@
                 <div class="calculator__previous-result" id="previousOperand">
                     123
                 </div>
-                <div class="calculator__current-result" id="currentOperand">
-                    456
-                </div>
+                <div
+                    class="calculator__current-result"
+                    id="currentOperand"
+                ></div>
             </div>
             <hr class="calculator__fancy-line" />
             <div class="calculator__buttons">
@@ -50,27 +50,64 @@
                 <button id="modulus" class="calculator__operators">%</button>
                 <button id="division" class="calculator__operators">÷</button>
 
-                <button class="calculator__numbers">7</button>
-                <button class="calculator__numbers">8</button>
-                <button class="calculator__numbers">9</button>
-                <button class="calculator__operators" id="multiply">x</button>
+                <button class="calculator__numbers" value="7" id="num7">
+                    7
+                </button>
+                <button class="calculator__numbers" value="8" id="num6">
+                    8
+                </button>
+                <button class="calculator__numbers" value="9" id="num9">
+                    9
+                </button>
+                <button class="calculator__operators" value="*" id="multiply">
+                    x
+                </button>
 
-                <button class="calculator__numbers">4</button>
-                <button class="calculator__numbers">5</button>
-                <button class="calculator__numbers">6</button>
-                <button class="calculator__operators" id="subtract">-</button>
+                <button class="calculator__numbers" value="4" id="num4">
+                    4
+                </button>
+                <button class="calculator__numbers" value="5" id="num5">
+                    5
+                </button>
+                <button class="calculator__numbers" value="6" id="num6">
+                    6
+                </button>
+                <button class="calculator__operators" value="-" id="subtract">
+                    -
+                </button>
 
-                <button class="calculator__numbers">1</button>
-                <button class="calculator__numbers">2</button>
-                <button class="calculator__numbers">3</button>
-                <button class="calculator__operators" id="addition">+</button>
+                <button class="calculator__numbers" value="1" id="num1">
+                    1
+                </button>
+                <button class="calculator__numbers" value="2" id="num2">
+                    2
+                </button>
+                <button class="calculator__numbers" value="3" id="num3">
+                    3
+                </button>
+                <button class="calculator__operators" value="+" id="addition">
+                    +
+                </button>
 
-                <button class="calculator__numbers">+ / -</button>
-                <button class="calculator__numbers">0</button>
-                <button class="calculator__numbers" id="decimal">.</button>
-                <button class="calculator__total" id="total">=</button>
+                <button
+                    class="calculator__numbers"
+                    value="+/-"
+                    id="additionMinus"
+                >
+                    + / -
+                </button>
+                <button class="calculator__numbers" value="0" id="num0">
+                    0
+                </button>
+                <button class="calculator__numbers" id="decimal" value=".">
+                    .
+                </button>
+                <button class="calculator__total" id="total" value="=">
+                    =
+                </button>
             </div>
         </div>
-        <script type="text/javascript" src="js-modules/script.js"></script>
+        <script type="module" src="script.js"></script>
+        <script type="module" src="./js-modules/dom.js"></script>
     </body>
 </html>

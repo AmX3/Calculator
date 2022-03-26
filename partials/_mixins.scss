@@ -35,3 +35,15 @@
     text-transform: $transform;
     text-decoration: $decoration;
 }
+
+@mixin border($width: 1px, $style: solid, $color, $radius: 50%) {
+    border-width: $width;
+    border-style: $style;
+    border-color: $color;
+    border-radius: $radius;
+}
+
+@mixin height-and-width($height, $width) {
+    height: $height;
+    width: $width;
+}

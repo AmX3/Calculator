@@ -1,6 +1,7 @@
 // Partials
 @use "./partials/mixins";
 @use "./partials/palette";
+@use "./partials/extends.scss";
 
 * {
     box-sizing: border-box;
@@ -14,29 +15,31 @@ body {
 }
 
 .calculator {
-    background: palette.$background;
+    @include mixins.background-and-color(palette.$background, none);
     border-radius: 30px;
-    width: 400px;
-    height: 700px;
+    @include mixins.height-and-width($height: 700px, $width: 400px);
     padding: 40px 30px;
 
     &--light-mode {
-        border: 1px solid palette.$light-background;
-        background: palette.$white;
+        @include mixins.border(
+            $color: palette.$light-background,
+            $radius: 30px
+        );
+        @include mixins.background-and-color(palette.$white, none);
         box-shadow: 0px 5px 15px -5px palette.$light-background-shadow;
     }
 
     &__toggle-button {
         cursor: pointer;
         position: relative;
-        background-color: palette.$btn-background;
-        border: 2px solid #2b2e28;
-        height: 26px;
-        width: 50px;
-        display: flex;
-        border-radius: 50px;
-        align-items: center;
-        justify-content: space-between;
+        @include mixins.background-and-color(palette.$btn-background, none);
+        @include mixins.border(
+            $width: 2px,
+            $color: palette.$toggle-btn,
+            $radius: 50px
+        );
+        @include mixins.flex;
+        @include mixins.height-and-width($height: 26px, $width: 50px);
         padding: 5px;
     }
 
@@ -56,8 +59,7 @@ body {
     &__slider {
         top: 1px;
         left: 1px;
-        width: 20px;
-        height: 20px;
+        @include mixins.height-and-width($height: 20px, $width: 20px);
         background-color: palette.$white;
         border-radius: 50%;
         position: absolute;
@@ -80,10 +82,16 @@ body {
         font-family: palette.$calc-font;
     }
 
+    &__previous-result {
+        opacity: 0.5;
+        &--light-mode {
+            color: palette.$light-btn-numbers;
+        }
+    }
+
     &__fancy-line {
         margin: 25px auto auto;
-
-        border: 1px solid palette.$fancy-line;
+        @include mixins.border($color: palette.$fancy-line, $radius: 0);
     }
 
     &__buttons {
@@ -97,20 +105,16 @@ body {
     }
 
     &__operators {
-        border-radius: 50%;
-        height: 70px;
-        width: 70px;
-
+        @extend %calcKeys;
         @include mixins.background-and-color(
             palette.$btn-background,
             palette.$btn-operators
         );
-        @include mixins.text-style(24px, 800, 27px);
+        @include mixins.border($color: palette.$btn-border, $radius: 50%);
+
         &--red {
             color: palette.$btn-clear;
         }
-        font-family: palette.$body-font;
-        border: 1px solid palette.$btn-border;
 
         &--light-mode {
             background: palette.$light-btn-background;
@@ -119,17 +123,12 @@ body {
     }
 
     &__numbers {
-        border-radius: 50%;
-        height: 70px;
-        width: 70px;
-
+        @extend %calcKeys;
         @include mixins.background-and-color(
             palette.$btn-background,
             palette.$btn-numbers
         );
-        @include mixins.text-style(24px, 800, 27px);
-        font-family: palette.$body-font;
-        border: 1px solid #2b2e28;
+        @include mixins.border($color: palette.$toggle-btn, $radius: 50%);
 
         &--light-mode {
             border: none;

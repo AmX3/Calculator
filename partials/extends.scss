@@ -1,0 +1,9 @@
+@use "./mixins";
+@use "./palette";
+
+// Operators and Numbers
+%calcKeys {
+    font-family: palette.$body-font;
+    @include mixins.height-and-width($height: 70px, $width: 70px);
+    @include mixins.text-style(24px, 800, 27px);
+}
