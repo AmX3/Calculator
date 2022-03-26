@@ -28,15 +28,21 @@
                 <i class="fa-solid fa-moon"></i>
                 <div class="calculator__slider"></div>
             </label>
-
-            <div class="calculator__display" id="calculatorDisplay">
-                <div class="calculator__previous-result" id="previousOperand">
-                    123
+            <div class="calculator__display-container">
+                <div class="calculator__display" id="calculatorDisplay">
+                    <div
+                        class="calculator__previous-result"
+                        id="previousOperand"
+                    >
+                        123
+                    </div>
+                    <div
+                        class="calculator__current-result"
+                        id="currentOperand"
+                    ></div>
+                    <div class="calculator__limit-warning"></div>
                 </div>
-                <div
-                    class="calculator__current-result"
-                    id="currentOperand"
-                ></div>
+                <i class="fa-solid fa-delete-left fa-2x" id="delete"></i>
             </div>
             <hr class="calculator__fancy-line" />
             <div class="calculator__buttons">
@@ -46,9 +52,15 @@
                 >
                     C
                 </button>
-                <button id="brackets" class="calculator__operators">( )</button>
-                <button id="modulus" class="calculator__operators">%</button>
-                <button id="division" class="calculator__operators">÷</button>
+                <button id="brackets" class="calculator__operators" value="()">
+                    ( )
+                </button>
+                <button id="modulus" class="calculator__operators" value="%">
+                    %
+                </button>
+                <button id="division" class="calculator__operators" value="÷">
+                    ÷
+                </button>
 
                 <button class="calculator__numbers" value="7" id="num7">
                     7

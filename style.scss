@@ -70,8 +70,16 @@ body {
         transform: translateX(23px);
     }
 
+    &__display-container {
+        height: 23%;
+        @include mixins.flex(
+            $flx-dir: column,
+            $just-cont: space-between,
+            $align-itm: flex-end
+        );
+    }
+
     &__display {
-        height: 20%;
         color: palette.$btn-numbers;
         @include mixins.flex(
             $flx-dir: column,
@@ -86,11 +94,33 @@ body {
         opacity: 0.5;
         &--light-mode {
             color: palette.$light-btn-numbers;
+            opacity: 0.3;
+        }
+    }
+
+    &__current-result {
+        &--light-mode {
+            color: palette.$light-btn-numbers;
+        }
+    }
+
+    &__limit-warning {
+        color: palette.$warning;
+        @include mixins.text-style(16px, 100, 27px);
+        text-align: center;
+        font-family: palette.$body-font;
+    }
+
+    .fa-delete-left {
+        float: right;
+        color: palette.$white;
+        &--light-mode {
+            color: palette.$dark-green;
         }
     }
 
     &__fancy-line {
-        margin: 25px auto auto;
+        margin: 20px auto auto;
         @include mixins.border($color: palette.$fancy-line, $radius: 0);
     }
 
@@ -101,7 +131,7 @@ body {
         align-content: center;
         padding: 0px 50px;
         gap: 15px;
-        margin-top: 35px;
+        margin-top: 25px;
     }
 
     &__operators {
