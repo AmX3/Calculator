@@ -7,3 +7,11 @@
     @include mixins.height-and-width($height: 70px, $width: 70px);
     @include mixins.text-style(24px, 800, 27px);
 }
+
+// Warning
+%errorWarnings {
+    color: palette.$warning;
+    @include mixins.text-style(16px, 100, 27px);
+    text-align: center;
+    font-family: palette.$body-font;
+}
