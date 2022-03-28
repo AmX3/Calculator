@@ -105,10 +105,11 @@ body {
     }
 
     &__limit-warning {
-        color: palette.$warning;
-        @include mixins.text-style(16px, 100, 27px);
-        text-align: center;
-        font-family: palette.$body-font;
+        @extend %errorWarnings;
+    }
+
+    &__delete-warning {
+        @extend %errorWarnings;
     }
 
     .fa-delete-left {

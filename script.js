@@ -14,11 +14,9 @@ const numbers = document.querySelectorAll(".calculator__numbers");
 
 const calcDisplay = document.querySelector("#calculatorDisplay");
 const prevResult = document.querySelector("#previousOperand");
-console.log(prevResult);
 const currResult = document.querySelector("#currentOperand");
 const limitWarning = document.querySelector(".calculator__limit-warning");
 const deleteNum = document.querySelector("#delete");
-console.log(deleteNum);
 
 // SELECTING NUMBERS
 // const zero = document.querySelector("#num0");
@@ -40,6 +38,9 @@ const multiply = document.querySelector("#multiply");
 const divide = document.querySelector("#division");
 const float = document.querySelector("#decimal");
 const plusMinus = document.querySelector("#additionMinus");
+const clear = document.querySelector("#clear");
+const clearNone = document.querySelector(".calculator__delete-warning");
+console.log(clearNone);
 
 // DARK MODE & LIGHT MODE
 toggleBtn.addEventListener("click", () => {
@@ -93,7 +94,8 @@ const currentResult = (num) => {
 // previousResult-fix
 const previousResult = (num) => {
     let prevValue = prevResult.textContent;
-    prevValue += currentResult(num);
+    prevValue += currentResult.textContent;
+    return prevValue;
 };
 
 // getting single values to display on currentResult
@@ -106,44 +108,85 @@ operators.forEach((btn) =>
 );
 
 // needs fixing
-switch (operators) {
-    case "multiply":
-        createElementWithText(
-            "p",
-            `${multiplication(btn.value, btn.value)}`,
-            currResult
-        );
-        break;
-    case "divide":
-        createElementWithText(
-            "p",
-            `${division(btn.value, btn.value)}`,
-            currResult
-        );
-        break;
-    case "subtract":
-        createElementWithText(
-            "p",
-            `${subtraction(btn.value, btn.value)}`,
-            currResult
-        );
-        break;
-    case "addition":
-        createElementWithText(
-            "p",
-            `${addition(btn.value, btn.value)}`,
-            currResult
-        );
-    default:
-        "Invalid Input";
-}
-
-// WHEN TOTAL BUTTON IS CLICKED, CORRECT RESULT APPEARS
-// **NEEDS FIXING => ???????
-total.addEventListener("submit", () => {
+const calculations = () => {
+    let operations = currResult.textContent;
+    console.log(operations);
+    // parseFloat first converts the string into numbers and stops when it reaches a value that is not a number
+    const prevNum = parseFloat(currResult.textContent);
+    console.log(prevNum);
+    const currNum = parseFloat(currResult.textContent);
+    // if (isNaN(prevNum) || isNaN(currNum)) return;
+    console.log(currNum);
+    let result;
+    switch (operations) {
+        case multiply:
+            result = createElementWithText(
+                "p",
+                `${multiplication(prevNum.value, currNum.value)}`,
+                currResult
+            );
+            console.log(result);
+            break;
+        case divide:
+            result = createElementWithText(
+                "p",
+                `${division(prevNum.value, currNum.value)}`,
+                currResult
+            );
+            break;
+        case subtract:
+            result = createElementWithText(
+                "p",
+                `${subtraction(prevNum.value, currNum.value)}`,
+                currResult
+            );
+            break;
+        case add:
+            result = createElementWithText(
+                "p",
+                `${addition(prevNum.value, currNum.value)}`,
+                currResult
+            );
+        default:
+            console.log(`Invalid Inputs`);
+    }
     // removes values if exceeds one. Only displays one line on currentResult display
     if (currResult.childNodes.length > 0) {
         currResult.removeChild(currResult.firstChild);
     }
     createElementWithText("p", currResult.value, currResult);
-});
+};
+
+total.addEventListener("click", calculations);
+
+// SPECIAL OPERATORS FUNCTIONS AND EVENT LISTENERS
+
+const appendNum = (num) => {
+    if (num === "." && currResult.includes(".")) {
+        return num;
+    }
+};
+float.addEventListener("click", appendNum);
+
+// Deleting a number -> if currentResult is truthy, return currentResult content that shows one less value else return error message if there is nothing to delete
+const deleteANum = () => {
+    let currentResult = currResult.textContent;
+    if (currentResult) {
+        return (currResult.textContent = currentResult.slice(0, -1));
+    } else {
+        if (clearNone.childNodes.length > 0) {
+            clearNone.removeChild(clearNone.firstChild);
+        }
+        createElementWithText("p", `Error! Enter a number.`, clearNone);
+    }
+};
+deleteNum.addEventListener("click", deleteANum);
+
+// clear button - removes current result, previous result and warning msg
+const clearAll = () => {
+    currResult.textContent = "";
+    prevResult.textContent = "";
+    limitWarning.textContent = "";
+};
+
+clear.addEventListener("click", clearAll);
