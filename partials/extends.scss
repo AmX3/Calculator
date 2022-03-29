@@ -15,3 +15,8 @@
     text-align: center;
     font-family: palette.$body-font;
 }
+
+%paragraph {
+    font-family: palette.$body-font;
+    @include mixins.text-style(16px, 300, 27px);
+}

@@ -15,6 +15,7 @@ const prevResult = document.querySelector("#previousOperand");
 const currResult = document.querySelector("#currentOperand");
 
 // WARNINGS
+const warnings = document.querySelector("#calculator__warnings");
 const limitWarning = document.querySelector(".calculator__limit-warning");
 const deleteNum = document.querySelector("#delete");
 const clearNone = document.querySelector(".calculator__delete-warning");
@@ -39,11 +40,6 @@ toggleBtn.addEventListener("click", () => {
     currResult.classList.toggle("calculator__current-result--light-mode");
     deleteNum.classList.toggle("fa-delete-left--light-mode");
 });
-
-// Default => currentResult = 0, and is removed when entering a value - FIX
-if (currResult.textContent === "0") {
-    currResult.textContent = "";
-}
 
 // // Node.textContent -> Returns / Sets the textual content of an element and all its descendants.
 
@@ -136,8 +132,9 @@ const calculations = () => {
 total.addEventListener("click", calculations);
 
 // SPECIAL OPERATORS FUNCTIONS AND EVENT LISTENERS
+
+// alerting user that only one decimal point can be used => no reoccuring decimal points
 const decimal = (num) => {
-    // alerting user that only one decimal point can be used => no reoccuring decimal points
     if (currResult.textContent.includes(".")) {
         alert("Number already contains a decimal point");
     } else {
@@ -164,6 +161,6 @@ deleteNum.addEventListener("click", deleteANum);
 const clearAll = () => {
     currResult.textContent = "";
     prevResult.textContent = "";
-    limitWarning.textContent = "";
+    warnings.textContent = "";
 };
 clear.addEventListener("click", clearAll);
