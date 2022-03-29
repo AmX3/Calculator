@@ -33,16 +33,17 @@
                     <div
                         class="calculator__previous-result"
                         id="previousOperand"
-                    >
-                        123
-                    </div>
+                    ></div>
                     <div
                         class="calculator__current-result"
                         id="currentOperand"
                     ></div>
-                    <div
-                        class="calculator__limit-warning calculator__delete-warning"
-                    ></div>
+                    <div id="calculator__warnings">
+                        <p
+                            id="removeWarnings"
+                            class="calculator__limit-warning calculator__delete-warning"
+                        ></p>
+                    </div>
                 </div>
                 <i class="fa-solid fa-delete-left fa-2x" id="delete"></i>
             </div>
@@ -54,9 +55,7 @@
                 >
                     C
                 </button>
-                <button id="brackets" class="calculator__operators" value="()">
-                    ( )
-                </button>
+                <button id="brackets" class="calculator__operators">( )</button>
                 <button id="modulus" class="calculator__operators" value="%">
                     %
                 </button>
@@ -64,55 +63,31 @@
                     ÷
                 </button>
 
-                <button class="calculator__numbers" value="7" id="num7">
-                    7
-                </button>
-                <button class="calculator__numbers" value="8" id="num6">
-                    8
-                </button>
-                <button class="calculator__numbers" value="9" id="num9">
-                    9
-                </button>
+                <button class="calculator__numbers" value="7">7</button>
+                <button class="calculator__numbers" value="8">8</button>
+                <button class="calculator__numbers" value="9">9</button>
                 <button class="calculator__operators" value="*" id="multiply">
                     x
                 </button>
 
-                <button class="calculator__numbers" value="4" id="num4">
-                    4
-                </button>
-                <button class="calculator__numbers" value="5" id="num5">
-                    5
-                </button>
-                <button class="calculator__numbers" value="6" id="num6">
-                    6
-                </button>
+                <button class="calculator__numbers" value="4">4</button>
+                <button class="calculator__numbers" value="5">5</button>
+                <button class="calculator__numbers" value="6">6</button>
                 <button class="calculator__operators" value="-" id="subtract">
                     -
                 </button>
 
-                <button class="calculator__numbers" value="1" id="num1">
-                    1
-                </button>
-                <button class="calculator__numbers" value="2" id="num2">
-                    2
-                </button>
-                <button class="calculator__numbers" value="3" id="num3">
-                    3
-                </button>
+                <button class="calculator__numbers" value="1">1</button>
+                <button class="calculator__numbers" value="2">2</button>
+                <button class="calculator__numbers" value="3">3</button>
                 <button class="calculator__operators" value="+" id="addition">
                     +
                 </button>
 
-                <button
-                    class="calculator__numbers"
-                    value="+/-"
-                    id="additionMinus"
-                >
+                <button class="calculator__numbers" id="additionMinus">
                     + / -
                 </button>
-                <button class="calculator__numbers" value="0" id="num0">
-                    0
-                </button>
+                <button class="calculator__numbers" value="0">0</button>
                 <button class="calculator__numbers" id="decimal" value=".">
                     .
                 </button>
@@ -123,5 +98,6 @@
         </div>
         <script type="module" src="script.js"></script>
         <script type="module" src="./js-modules/dom.js"></script>
+        <script type="module" src="./js-modules/operators.js"></script>
     </body>
 </html>

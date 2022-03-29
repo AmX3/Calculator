@@ -118,6 +118,7 @@ body {
         &--light-mode {
             color: palette.$dark-green;
         }
+        cursor: pointer;
     }
 
     &__fancy-line {
@@ -133,6 +134,7 @@ body {
         padding: 0px 50px;
         gap: 15px;
         margin-top: 25px;
+        cursor: pointer;
     }
 
     &__operators {
@@ -142,6 +144,7 @@ body {
             palette.$btn-operators
         );
         @include mixins.border($color: palette.$btn-border, $radius: 50%);
+        cursor: pointer;
 
         &--red {
             color: palette.$btn-clear;
