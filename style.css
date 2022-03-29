@@ -135,6 +135,7 @@ body {
 .calculator .fa-delete-left {
   float: right;
   color: #ffff;
+  cursor: pointer;
 }
 .calculator .fa-delete-left--light-mode {
   color: #427e1d;
@@ -154,6 +155,7 @@ body {
   padding: 0px 50px;
   gap: 15px;
   margin-top: 25px;
+  cursor: pointer;
 }
 .calculator__operators {
   background-color: #171616;
@@ -162,6 +164,7 @@ body {
   border-style: solid;
   border-color: #2b2e28;
   border-radius: 50%;
+  cursor: pointer;
 }
 .calculator__operators--red {
   color: #ae6650;

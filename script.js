@@ -1,46 +1,28 @@
+// IMPORT JS FILES INCL. OPERATIONS CALCULATIONS
 import { createElementWithText } from "./js-modules/dom.js";
-
 import { addition } from "./js-modules/operators.js";
 import { subtraction } from "./js-modules/operators.js";
 import { multiplication } from "./js-modules/operators.js";
 import { division } from "./js-modules/operators.js";
+import { remainder } from "./js-modules/operators.js";
 
 // TOGGLE + CALCULATOR DISPLAY
-
 const toggleBtn = document.querySelector("#toggleBtn");
 const calculator = document.querySelector(".calculator");
 const operators = document.querySelectorAll(".calculator__operators");
 const numbers = document.querySelectorAll(".calculator__numbers");
-
-const calcDisplay = document.querySelector("#calculatorDisplay");
 const prevResult = document.querySelector("#previousOperand");
 const currResult = document.querySelector("#currentOperand");
+
+// WARNINGS
 const limitWarning = document.querySelector(".calculator__limit-warning");
 const deleteNum = document.querySelector("#delete");
-
-// SELECTING NUMBERS
-// const zero = document.querySelector("#num0");
-// const one = document.querySelector("#num1");
-// const two = document.querySelector("#num2");
-// const three = document.querySelector("#num3");
-// const four = document.querySelector("#num4");
-// const five = document.querySelector("#num5");
-// const six = document.querySelector("#num6");
-// const seven = document.querySelector("#num7");
-// const eight = document.querySelector("#num8");
-// const nine = document.querySelector("#num9");
+const clearNone = document.querySelector(".calculator__delete-warning");
 
 // OPERATORS AND SPECIAL OP
 const total = document.querySelector("#total");
-const add = document.querySelector("#addition");
-const subtract = document.querySelector("#subtract");
-const multiply = document.querySelector("#multiply");
-const divide = document.querySelector("#division");
 const float = document.querySelector("#decimal");
-const plusMinus = document.querySelector("#additionMinus");
 const clear = document.querySelector("#clear");
-const clearNone = document.querySelector(".calculator__delete-warning");
-console.log(clearNone);
 
 // DARK MODE & LIGHT MODE
 toggleBtn.addEventListener("click", () => {
@@ -52,22 +34,21 @@ toggleBtn.addEventListener("click", () => {
     numbers.forEach((btn) =>
         btn.classList.toggle("calculator__numbers--light-mode")
     );
+    // changing currentResult and prevResult text color
     prevResult.classList.toggle("calculator__previous-result--light-mode");
     currResult.classList.toggle("calculator__current-result--light-mode");
     deleteNum.classList.toggle("fa-delete-left--light-mode");
 });
 
-// Default current result calcdisplay to 0 -> Fix
-if ((currResult.textContent = "0")) {
+// Default => currentResult = 0, and is removed when entering a value - FIX
+if (currResult.textContent === "0") {
     currResult.textContent = "";
 }
 
-// Node.textContent -> Returns / Sets the textual content of an element and all its descendants.
-const calcResultDisplay = (result) => {
-    calcDisplay.textContent = result;
-};
+// // Node.textContent -> Returns / Sets the textual content of an element and all its descendants.
 
-// alerting the user that they have reached the limit the calcDisplay can display
+// Alerting the user that they have reached the limit (> 10) the calcDisplay can display
+// Also removing repeated error messages
 const limitCalcDisplay = (numlimit) => {
     if (numlimit.length > 10) {
         if (limitWarning.childNodes.length > 0) {
@@ -81,7 +62,7 @@ const limitCalcDisplay = (numlimit) => {
     }
 };
 
-// if numbers value is greater than 10, error warning should appear else numbers concatenate
+// If currentResult.length is greater than 10, error warning should appear else numbers concatenate
 const currentResult = (num) => {
     let currentResult = currResult.textContent;
     if (currentResult.length > 10) {
@@ -91,82 +72,79 @@ const currentResult = (num) => {
     }
 };
 
-// previousResult-fix
-const previousResult = (num) => {
-    let prevValue = prevResult.textContent;
-    prevValue += currentResult.textContent;
-    return prevValue;
-};
-
-// getting single values to display on currentResult
+// getting single numbers (btn value from HTML) to display on currentResult
 numbers.forEach((btn) =>
     btn.addEventListener("click", () => currentResult(btn.value))
 );
 
-operators.forEach((btn) =>
-    btn.addEventListener("click", () => currentResult(btn.value))
-);
-
-// needs fixing
-const calculations = () => {
-    let operations = currResult.textContent;
-    console.log(operations);
-    // parseFloat first converts the string into numbers and stops when it reaches a value that is not a number
-    const prevNum = parseFloat(currResult.textContent);
-    console.log(prevNum);
-    const currNum = parseFloat(currResult.textContent);
-    // if (isNaN(prevNum) || isNaN(currNum)) return;
-    console.log(currNum);
-    let result;
-    switch (operations) {
-        case multiply:
-            result = createElementWithText(
-                "p",
-                `${multiplication(prevNum.value, currNum.value)}`,
-                currResult
-            );
-            console.log(result);
-            break;
-        case divide:
-            result = createElementWithText(
-                "p",
-                `${division(prevNum.value, currNum.value)}`,
-                currResult
-            );
-            break;
-        case subtract:
-            result = createElementWithText(
-                "p",
-                `${subtraction(prevNum.value, currNum.value)}`,
-                currResult
-            );
-            break;
-        case add:
-            result = createElementWithText(
-                "p",
-                `${addition(prevNum.value, currNum.value)}`,
-                currResult
-            );
-        default:
-            console.log(`Invalid Inputs`);
-    }
-    // removes values if exceeds one. Only displays one line on currentResult display
-    if (currResult.childNodes.length > 0) {
-        currResult.removeChild(currResult.firstChild);
-    }
-    createElementWithText("p", currResult.value, currResult);
+//  previous result will show current value and clicked operation. current result will display as an empty string
+const clickedOp = (clickedOperation) => {
+    prevResult.textContent = currResult.textContent + clickedOperation;
+    currResult.textContent = "";
 };
 
+// getting single operators (btn value from HTML) to display on currentResult
+operators.forEach((btn) =>
+    btn.addEventListener("click", () => clickedOp(btn.value))
+);
+
+const calculations = () => {
+    const prevOp = prevResult.textContent;
+    // only retrieving previous number and exluding operator
+    const prevNum = prevOp.slice(0, -1);
+    // selecting currentNumber
+    const currNum = currResult.textContent;
+    // retrieving the selected operator in display
+    const operations = prevOp.charAt(prevOp.length - 1);
+
+    // Storing nums as prevnum or currnum which will be used in our calculations
+    const number1 = +prevNum;
+    const number2 = +currNum;
+
+    // Setting total = 0;
+    let total;
+
+    switch (operations) {
+        case "*":
+            total = multiplication(number1, number2);
+            break;
+        case "÷":
+            total = division(number1, number2);
+            break;
+        case "-":
+            total = subtraction(number1, number2);
+            break;
+        case "+":
+            total = addition(number1, number2);
+            break;
+        case "%":
+            total = remainder(number1, number2);
+            break;
+        default:
+            console.log(`Invalid Operation`);
+            break;
+    }
+
+    // if number value is greater than 10, error warning displays => convert to string to get .length value
+    const convertResultToStr = total.toString();
+    if (convertResultToStr.length > 12) {
+        limitCalcDisplay(convertResultToStr);
+    } else {
+        currResult.textContent = convertResultToStr;
+    }
+};
 total.addEventListener("click", calculations);
 
 // SPECIAL OPERATORS FUNCTIONS AND EVENT LISTENERS
-
-const appendNum = (num) => {
-    if (num === "." && currResult.includes(".")) {
-        return num;
+const decimal = (num) => {
+    // alerting user that only one decimal point can be used => no reoccuring decimal points
+    if (currResult.textContent.includes(".")) {
+        alert("Number already contains a decimal point");
+    } else {
+        currResult.textContent += num;
     }
 };
-float.addEventListener("click", appendNum);
+float.addEventListener("click", decimal);
 
 // Deleting a number -> if currentResult is truthy, return currentResult content that shows one less value else return error message if there is nothing to delete
 const deleteANum = () => {
@@ -188,5 +166,4 @@ const clearAll = () => {
     prevResult.textContent = "";
     limitWarning.textContent = "";
 };
-
 clear.addEventListener("click", clearAll);
