@@ -53,8 +53,13 @@ Calculator:
 5.  **Operator keys**: Obtaining the integers preceding and after the chosen operator key. A switch statement is used to perform calculations. An eventListener is attached to the = key.
 
     -   Operator key (.): Handling decimals and the reoccurence of decimal points
+    -   Operator key (Mod): returns the remainder of the calculation
 
 6.  AC key: Resetting calculator display to empty
+
+## Current Issues
+
+-   Reoccuring decimal point
 
 ## Future Improvements
 

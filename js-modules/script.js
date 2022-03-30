@@ -127,6 +127,7 @@ total.addEventListener("click", calculations);
 // SPECIAL OPERATORS FUNCTIONS AND EVENT LISTENERS
 
 // alerting user that only one decimal point can be used => no reoccuring decimal points
+// Need Fix
 const decimal = (num) => {
     if (currResult.textContent.includes(".")) {
         return alert("Number already contains a decimal point");
