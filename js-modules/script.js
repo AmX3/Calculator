@@ -1,10 +1,10 @@
 // IMPORT JS FILES INCL. OPERATIONS CALCULATIONS
-import { addition } from "./js-modules/operators.js";
-import { subtraction } from "./js-modules/operators.js";
-import { multiplication } from "./js-modules/operators.js";
-import { division } from "./js-modules/operators.js";
-import { remainder } from "./js-modules/operators.js";
-import { convertToPercentage } from "./js-modules/operators.js";
+import { addition } from "./operators.js";
+import { subtraction } from "./operators.js";
+import { multiplication } from "./operators.js";
+import { division } from "./operators.js";
+import { remainder } from "./operators.js";
+import { convertToPercentage } from "./operators.js";
 
 // TOGGLE + CALCULATOR DISPLAY
 const toggleBtn = document.querySelector("#toggleBtn");
