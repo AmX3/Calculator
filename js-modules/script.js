@@ -1,10 +1,10 @@
 // IMPORT JS FILES INCL. OPERATIONS CALCULATIONS
-import { createElementWithText } from "./js-modules/dom.js";
 import { addition } from "./js-modules/operators.js";
 import { subtraction } from "./js-modules/operators.js";
 import { multiplication } from "./js-modules/operators.js";
 import { division } from "./js-modules/operators.js";
 import { remainder } from "./js-modules/operators.js";
+import { convertToPercentage } from "./js-modules/operators.js";
 
 // TOGGLE + CALCULATOR DISPLAY
 const toggleBtn = document.querySelector("#toggleBtn");
@@ -14,16 +14,13 @@ const numbers = document.querySelectorAll(".calculator__numbers");
 const prevResult = document.querySelector("#previousOperand");
 const currResult = document.querySelector("#currentOperand");
 
-// WARNINGS
-const warnings = document.querySelector("#calculator__warnings");
-const limitWarning = document.querySelector(".calculator__limit-warning");
-const deleteNum = document.querySelector("#delete");
-const clearNone = document.querySelector(".calculator__delete-warning");
-
 // OPERATORS AND SPECIAL OP
 const total = document.querySelector("#total");
 const float = document.querySelector("#decimal");
 const clear = document.querySelector("#clear");
+const deleteNum = document.querySelector("#delete");
+const percentBtn = document.querySelector("#percentage");
+console.log(percentBtn);
 
 // DARK MODE & LIGHT MODE
 toggleBtn.addEventListener("click", () => {
@@ -47,14 +44,7 @@ toggleBtn.addEventListener("click", () => {
 // Also removing repeated error messages
 const limitCalcDisplay = (numlimit) => {
     if (numlimit.length > 10) {
-        if (limitWarning.childNodes.length > 0) {
-            limitWarning.removeChild(limitWarning.firstChild);
-        }
-        createElementWithText(
-            "p",
-            `Number limit has been reached`,
-            limitWarning
-        );
+        alert(`Number limit has been reached`);
     }
 };
 
@@ -114,6 +104,9 @@ const calculations = () => {
             total = addition(number1, number2);
             break;
         case "%":
+            total = convertToPercentage(number1);
+            break;
+        case "/":
             total = remainder(number1, number2);
             break;
         default:
@@ -136,23 +129,20 @@ total.addEventListener("click", calculations);
 // alerting user that only one decimal point can be used => no reoccuring decimal points
 const decimal = (num) => {
     if (currResult.textContent.includes(".")) {
-        alert("Number already contains a decimal point");
+        return alert("Number already contains a decimal point");
     } else {
         currResult.textContent += num;
     }
 };
 float.addEventListener("click", decimal);
 
-// Deleting a number -> if currentResult is truthy, return currentResult content that shows one less value else return error message if there is nothing to delete
+// Deleting a number -> if currentResult is truthy, return currentResult content that shows one less value else return error message if there is nothing to delete.
 const deleteANum = () => {
     let currentResult = currResult.textContent;
     if (currentResult) {
         return (currResult.textContent = currentResult.slice(0, -1));
     } else {
-        if (clearNone.childNodes.length > 0) {
-            clearNone.removeChild(clearNone.firstChild);
-        }
-        createElementWithText("p", `Error! Enter a number.`, clearNone);
+        alert(`Error! Enter a number.`);
     }
 };
 deleteNum.addEventListener("click", deleteANum);
@@ -161,6 +151,5 @@ deleteNum.addEventListener("click", deleteANum);
 const clearAll = () => {
     currResult.textContent = "";
     prevResult.textContent = "";
-    warnings.textContent = "";
 };
 clear.addEventListener("click", clearAll);

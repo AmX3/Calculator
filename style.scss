@@ -104,6 +104,7 @@ body {
 
     &__previous-result {
         opacity: 0.5;
+        @include mixins.text-style(30px, 300, 36px);
         &--light-mode {
             color: palette.$light-btn-numbers;
             opacity: 0.3;
@@ -167,6 +168,10 @@ body {
         }
     }
 
+    &__operators:active {
+        background: palette.$btn-border;
+    }
+
     &__numbers {
         @extend %calcKeys;
         @include mixins.background-and-color(
@@ -183,6 +188,10 @@ body {
                 palette.$light-btn-numbers
             );
         }
+    }
+
+    &__numbers:active {
+        background: palette.$btn-border;
     }
 
     &__total {

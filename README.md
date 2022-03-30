@@ -12,7 +12,7 @@ Recreation of chosen calculator design by utilising EventListeners and knowledge
 
 Deployed site: https://amx3.github.io/Calculator/
 
-![image](./Images/image.jpg)
+![image](./Images/image.png)
 
 ## Inspiration
 

@@ -42,12 +42,6 @@
                         class="calculator__current-result"
                         id="currentOperand"
                     ></div>
-                    <div id="calculator__warnings">
-                        <p
-                            id="removeWarnings"
-                            class="calculator__limit-warning calculator__delete-warning"
-                        ></p>
-                    </div>
                 </div>
                 <i class="fa-solid fa-delete-left fa-2x" id="delete"></i>
             </div>
@@ -60,7 +54,7 @@
                     C
                 </button>
                 <button id="brackets" class="calculator__operators">( )</button>
-                <button id="modulus" class="calculator__operators" value="%">
+                <button id="percentage" class="calculator__operators" value="%">
                     %
                 </button>
                 <button id="division" class="calculator__operators" value="÷">
@@ -88,8 +82,8 @@
                     +
                 </button>
 
-                <button class="calculator__numbers" id="additionMinus">
-                    + / -
+                <button class="calculator__operators" id="remainder" value="/">
+                    mod
                 </button>
                 <button class="calculator__numbers" value="0">0</button>
                 <button class="calculator__numbers" id="decimal" value=".">
@@ -111,8 +105,7 @@
                 >
             </p>
         </footer>
-        <script type="module" src="script.js"></script>
-        <script type="module" src="./js-modules/dom.js"></script>
+        <script type="module" src="./js-modules/script.js"></script>
         <script type="module" src="./js-modules/operators.js"></script>
     </body>
 </html>

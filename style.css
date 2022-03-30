@@ -145,6 +145,12 @@ body {
 }
 .calculator__previous-result {
   opacity: 0.5;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 36px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-decoration: none;
 }
 .calculator__previous-result--light-mode {
   color: #565656;
@@ -193,6 +199,9 @@ body {
   background: #f8f8f8;
   border: none;
 }
+.calculator__operators:active {
+  background: #2b2e28;
+}
 .calculator__numbers {
   background-color: #171616;
   color: #f0f0f0;
@@ -206,6 +215,9 @@ body {
   border: none;
   background-color: #f8f8f8;
   color: #565656;
+}
+.calculator__numbers:active {
+  background: #2b2e28;
 }
 .calculator__total {
   background-color: #427e1d;
