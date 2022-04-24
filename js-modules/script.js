@@ -135,7 +135,10 @@ const decimal = (num) => {
         currResult.textContent += num;
     }
 };
-float.addEventListener("click", decimal);
+
+float.addEventListener("click", () => {
+    decimal(float.value);
+});
 
 // Deleting a number -> if currentResult is truthy, return currentResult content that shows one less value else return error message if there is nothing to delete.
 const deleteANum = () => {
